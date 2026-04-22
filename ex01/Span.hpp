@@ -2,22 +2,32 @@
 #pragma once
 
 #include <vector>
+#include <stdexcept>
+#include <iostream>
+#include <iterator>
 
 class Span
 {
-	public:
-		Span(unsigned int size);
-		Span(const Span& copy);
-		Span& operator=(const Span& other);
-		~Span();
+public:
+	Span(unsigned int size);
+	Span(const Span &copy);
+	Span &operator=(const Span &other);
+	~Span();
 
-		void addNumber(unsigned int nb);
+	void addNumber(int nb);
+	int shortestSpan() const;
+	int longestSpan() const;
+	const std::vector<int> &getVector() const;
 
+	template <typename Iterator>
+	void rangeNumbers(Iterator begin, Iterator end);
 
-		std::vector<unsigned int> _ptr;
-
-	private:
-		Span();
-		unsigned int _size;
-		unsigned int _addeds;
+private:
+	std::vector<int> _v_numbers;
+	Span();
+	unsigned int _size;
 };
+
+std::ostream &operator<<(std::ostream &os, const Span &span);
+
+#include "Span.tpp"
