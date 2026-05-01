@@ -16,9 +16,9 @@ typename T::iterator easyfind(T& container, int toFind)
 }
 
 template<typename T>
-typename T::iterator easyfind(const T& container, int toFind)
+typename T::const_iterator easyfind(const T& container, int toFind)
 {
-	typename T::iterator it = std::find(container.begin(), container.end(), toFind);
+	typename T::const_iterator it = std::find(container.begin(), container.end(), toFind);
 
 	if (it != container.end())
 		return it;
