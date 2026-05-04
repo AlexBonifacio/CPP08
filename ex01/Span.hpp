@@ -16,7 +16,8 @@ public:
 
 	void addNumber(int nb);
 	int shortestSpan() const;
-	int longestSpan() const;
+	long longestSpan() const;
+
 	const std::vector<int> &getVector() const;
 
 	template <typename Iterator>

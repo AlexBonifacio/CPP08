@@ -5,7 +5,7 @@ void Span::rangeNumbers(Iterator begin, Iterator end)
 {
 	size_t dist = std::distance(begin, end);
 
-	if (dist + _v_numbers.size() > _size)
+	if (dist > _size -  _v_numbers.size())
 		throw std::out_of_range("Range: too big");
 
 	while (begin != end)

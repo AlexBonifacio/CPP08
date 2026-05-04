@@ -7,12 +7,10 @@
 #include <iostream>
 
 Span::Span(unsigned int size) : _v_numbers(), _size(size)
-{
-}
+{}
 
 Span::Span(const Span &copy) : _v_numbers(copy._v_numbers), _size(copy._size)
-{
-}
+{}
 
 Span &Span::operator=(const Span &other)
 {
@@ -52,13 +50,13 @@ int Span::shortestSpan() const // we are looking for the shortest range between 
 	return *std::min_element(tmp.begin() + 1, tmp.end());
 }
 
-int Span::longestSpan() const
+long Span::longestSpan() const
 {
 	if (_v_numbers.size() < 2)
 		throw std::logic_error("Span: not enough elements to find a span");
 
-	 int min = *std::min_element(_v_numbers.begin(), _v_numbers.end());
-	 int max = *std::max_element(_v_numbers.begin(), _v_numbers.end());
+	 long min = *std::min_element(_v_numbers.begin(), _v_numbers.end());
+	 long max = *std::max_element(_v_numbers.begin(), _v_numbers.end());
 
 	return (max - min);
 }
