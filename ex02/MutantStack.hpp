@@ -15,7 +15,7 @@
 // il impose un comportement LIFO avec push, pop, top
 // mais laisse le choix du stockage, deque, vector, list
 
-// public:     typedef	       _Sequence			container_type; 
+// public:     typedef	       _Sequence			container_type;
 // permet de rendre public le type de container
 // on utlise typedef typename pour preciser que ce qui suit est un type et lorsque le type est dependant d'un template
 // typedef my_int int; -> ok
@@ -27,17 +27,23 @@
 template <typename T>
 class MutantStack : public std::stack<T>
 {
-	public:
-		typedef typename std::stack<T>::container_type::iterator iterator; // je cree un alias iterator pour le type iterator du contenu interne de std::stack<T>
-		typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+public:
+	typedef typename std::stack<T>::container_type::iterator iterator; // je cree un alias iterator pour le type iterator du contenu interne de std::stack<T>
+	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 
-		MutantStack(){};
-		MutantStack(const MutantStack& copy);
-		~MutantStack(){};
-		MutantStack& operator=(const MutantStack& other);
+	MutantStack() : std::stack<T>() {};
+	MutantStack(const MutantStack &copy) : std::stack<T>(copy) {};
+	~MutantStack() {};
 
-		iterator begin() {return (this->c.begin());};
-		iterator end() {return (this->c.end());};
-		const_iterator begin() const {return (this->c.begin());};
-		const_iterator end() const {return (this->c.end());};
+	MutantStack &operator=(const MutantStack &other)
+	{
+		if (this != &other)
+			std::stack<T>::operator=(other);
+		return (*this);
+	}
+
+	iterator begin() { return (this->c.begin()); };
+	iterator end() { return (this->c.end()); };
+	const_iterator begin() const { return (this->c.begin()); };
+	const_iterator end() const { return (this->c.end()); };
 };
