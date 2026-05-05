@@ -1,6 +1,6 @@
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -MMD -MP #-std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -MMD -MP -std=c++98
 NAME = span.out
 
 OBJ_DIR = obj

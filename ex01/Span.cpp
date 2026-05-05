@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iostream>
+#include <numeric>
 
 Span::Span(unsigned int size) : _v_numbers(), _size(size)
 {}
@@ -33,7 +34,6 @@ void Span::addNumber(int nb)
 		throw std::out_of_range("Span: the container is already full");
 }
 
-#include <numeric>
 int Span::shortestSpan() const // we are looking for the shortest range between two element
 {
 	std::vector< int> ordered;

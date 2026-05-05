@@ -8,7 +8,7 @@ int main(void)
 {
 	std::vector<int> vector_array;
 	std::list<int> lst;
-
+	
 	for (int i = 0; i < 10; i++)
 	{
 		vector_array.push_back(i * 2);

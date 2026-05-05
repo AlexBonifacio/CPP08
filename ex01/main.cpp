@@ -4,19 +4,33 @@
 #include <cstdlib>	 // rand
 #include <algorithm> // min_element, max_element
 
-void print_span(std::vector<unsigned int> v);
 int main(void)
 {
 	std::srand(time(NULL));
 
 	std::vector<unsigned int> random;
 	for (size_t i = 0; i < 10; i++)
-		random.push_back(std::rand());
+		random.push_back(std::rand() % 1000);
 
 	std::vector<unsigned int> empty;
-	std::vector<unsigned int> ascendant = {1, 2, 3, 4, 5};
-	std::vector<unsigned int> descendant = {5, 4, 3, 2, 1};
-	std::vector<unsigned int> twin = {5, 5, 5};
+	std::vector<unsigned int> ascendant;
+	for (int i = 0; i < 5; i++)
+	{
+		ascendant.push_back(i);
+	}
+
+	std::vector<unsigned int> descendant;
+	for (int i = 5; i > 0; i--)
+	{
+		descendant.push_back(i);
+	}
+
+	std::vector<unsigned int> twin;
+	for (int i = 0; i < 3; i++)
+	{
+		twin.push_back(5);
+	}
+
 	try
 	{
 
@@ -38,9 +52,9 @@ int main(void)
 		Span sp3(5);
 		sp3.rangeNumbers(twin.begin(), twin.end());
 		std::cout << "Twin tests:\n";
+		std::cout << sp3 << "\n";
 		std::cout << "Shortest span: " << sp3.shortestSpan() << "\n";
 		std::cout << "Longest span: " << sp3.longestSpan() << "\n\n";
-		std::cout << sp3 << "\n";
 
 		Span sp4 = Span(5);
 		std::cout << "Custom tests:\n";
@@ -49,6 +63,7 @@ int main(void)
 		sp4.addNumber(200);
 		sp4.addNumber(400);
 		sp4.addNumber(300);
+		std::cout << sp4 << "\n";
 		std::cout << sp4.shortestSpan() << "\n";
 		std::cout << sp4.longestSpan() << "\n";
 		std::cout << "\n";
